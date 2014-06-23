@@ -79,3 +79,12 @@ class Restorer(BaseOperations):
 
     def write(self, entry):
         return self.client.write(entry['key'], entry['value'], ttl = entry['ttl'], dir = entry['dir'])
+
+class Watcher(Dumper):
+
+    def watch(self, watch_path='/', filename=None):
+        watch = self.client.watch(watch_path)
+
+        self.dump()
+
+
