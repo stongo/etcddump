@@ -83,7 +83,7 @@ class Restorer(BaseOperations):
 class Watcher(Dumper):
 
     def watch(self, watch_path='/', filename=None):
-        watch = self.client.watch(watch_path)
+        watch = self.client.read(watch_path, recursive=True, wait=True, waitIndex=0, timeout=0)
 
         self.dump()
 
