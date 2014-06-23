@@ -25,6 +25,8 @@ After you've installed etcddump, the program ``etcdumper`` will be available on 
 
 The only dependency of ``etcddump`` is  `python-ectd <https://github.com/jplana/python-etcd>`_ version 0.3.0 or later.
 
+
+
 Usage
 -----
 
@@ -33,10 +35,17 @@ Usage is really simple and has been thought so that it resembles how most dumper
 .. code:: bash
 
     # dump to stdout
-    etcdumper dump https://etcd.example.com:4001
+    # etcd host defaults to htts://localhost:4001
+    etcdumper dump
 
-    # dump to file
+    # dump to file and specify etcd host
     etcdumper --file dump.json dump https://etcd.example.com:4001
+
+    # watch path and dump to stdout on change
+    etcdumper --watch '/' dump
+
+    # watch path and dump to stdout on change
+    etcdumper --file dump.json --watch '/' dump
 
     # restore from file
     etcdumper --file dump.json restore http://localhost:4001
